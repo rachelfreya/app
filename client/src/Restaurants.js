@@ -14,6 +14,8 @@ class Restaurants extends Component {
   render() {
     return (
       <div>
+        <Button bsStyle='success' onClick={() => this.props.priceSort(this.props.restaurants)}>Sort By Price</Button>
+        <Button bsStyle='success' onClick={() => this.props.ratingSort(this.props.restaurants)}>Sort By Rating</Button>
         <Media.List>
         {this.props.restaurants.filter((restaurant, i) => i < this.props.limit && i >= this.props.limit - 20).map(restaurant =>
           <Media.ListItem key={restaurant.id}>
@@ -22,7 +24,7 @@ class Restaurants extends Component {
             </Media.Left>
             <Media.Body>
               <Media.Heading><a href={`https://www.yelp.com/biz/${restaurant.id}`}>{restaurant.name}</a></Media.Heading>
-              <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+              <p>{`${restaurant.rating} ${restaurant.price}`}</p>
             </Media.Body>
           </Media.ListItem>
           )}
