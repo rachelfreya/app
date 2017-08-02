@@ -3,6 +3,9 @@ const yelp = require('yelp-fusion');
 
 const app = express();
 
+const clientId = process.env.CLIENT_ID;
+const clientSecret = process.env.CLIENT_SECRET;
+
 app.set('port', process.env.PORT || 3001);
 
 // Express only serves static assets in production
@@ -11,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('/api/food', (req, res) => {
-  yelp.accessToken('2GZoynVLCpPNmDo2fkK58w', '7VirYTmtmDVUuA3UQSe5NkQeRciYk09Yu4WkVlolgOY7YAjvCdHES0zpAMwePqOf').then(token => {
+  yelp.accessToken(clientId, clientSecret).then(token => {
     const client = yelp.client(token.jsonBody.access_token);
 
     client.search({
