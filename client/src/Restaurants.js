@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-import { Media, Pagination } from 'react-bootstrap';
+import { Media, Pagination, Button } from 'react-bootstrap';
 
 class Restaurants extends Component {
   constructor(props) {
     super(props);
     this.state = {
     }
-
   }
   componentDidMount() {
   }
+
 
   render() {
     return (
@@ -22,7 +21,7 @@ class Restaurants extends Component {
               <img width={64} height={64} src={restaurant.image_url} alt=''/>
             </Media.Left>
             <Media.Body>
-              <Media.Heading>{restaurant.name}</Media.Heading>
+              <Media.Heading><a href={`https://www.yelp.com/biz/${restaurant.id}`}>{restaurant.name}</a></Media.Heading>
               <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
             </Media.Body>
           </Media.ListItem>
