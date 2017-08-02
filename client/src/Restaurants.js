@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Media } from 'react-bootstrap';
+// import axios from 'axios';
+import { Media, Pagination } from 'react-bootstrap';
 
 class Restaurants extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Restaurants extends Component {
     return (
       <div>
         <Media.List>
-        {this.props.restaurants.map(restaurant =>
+        {this.props.restaurants.filter((restaurant, i) => i < this.props.limit && i >= this.props.limit - 20).map(restaurant =>
           <Media.ListItem key={restaurant.id}>
             <Media.Left>
               <img width={64} height={64} src={restaurant.image_url} alt=''/>
@@ -28,6 +28,16 @@ class Restaurants extends Component {
           </Media.ListItem>
           )}
         </Media.List>
+        <Pagination
+          prev
+          next
+          first
+          last
+          boundaryLinks
+          items={this.props.items}
+          activePage={this.props.activePage}
+          onSelect={this.props.handleSelect}
+        />
       </div>
     );
   }
