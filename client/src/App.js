@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button, Media } from 'react-bootstrap';
+import Restaurants from './Restaurants';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: '',
+      restaurants: []
     }
     this.handleChange = this.handleChange.bind(this);
-    this.search = this.search.bind(this);
+    this.searchCity = this.searchCity.bind(this);
   }
   componentDidMount() {
-    // axios.get('api/food/boston')
-    // .then(res => console.log(res.data))
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
 
-  search() {
+  searchCity() {
     axios.get(`api/food/${this.state.value}`)
-    .then(res => console.log(res.data))
+    .then(res => {
+      this.setState({ restaurants: res.data });
+      console.log(res.data)
+    })
   }
 
   render() {
@@ -42,7 +45,8 @@ class App extends Component {
             />
           </FormGroup>
         </form>
-        <Button bsStyle='success' onClick={this.search}>Submit</Button>
+        <Button bsStyle='success' onClick={this.searchCity}>Submit</Button>
+        <Restaurants restaurants={this.state.restaurants} />
       </div>
     );
   }
