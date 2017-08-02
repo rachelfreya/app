@@ -13,13 +13,15 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-app.get('/api/food', (req, res) => {
+app.get('/api/food/:city', (req, res) => {
+  const city = req.params.city;
   yelp.accessToken(clientId, clientSecret).then(token => {
     const client = yelp.client(token.jsonBody.access_token);
 
     client.search({
-      term:'Four Barrel Coffee',
-      location: 'san francisco, ca'
+      term: 'restaurants',
+      location: city,
+      limit: 50
     }).then(results => {
       res.json(results.jsonBody.businesses);
     });
