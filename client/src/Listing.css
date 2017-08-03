@@ -1,0 +1,9 @@
+.listing-container {
+  display: flex;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}

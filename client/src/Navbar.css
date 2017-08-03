@@ -1,0 +1,22 @@
+.nav {
+  background-color: tomato;
+  margin: 0;
+}
+
+.type-form {
+  margin-right: 2px;
+}
+
+.query-button {
+  background-color: tomato;
+  border-color: white;
+  color: white;
+}
+
+#basic-nav-dropdown {
+  color: white;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+}

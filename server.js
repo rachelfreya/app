@@ -19,7 +19,23 @@ app.get('/api/food/:city', (req, res) => {
     const client = yelp.client(token.jsonBody.access_token);
 
     client.search({
-      term: 'restaurants',
+      location: city,
+      limit: 50
+    }).then(results => {
+      res.json(results.jsonBody.businesses);
+    });
+  }).catch(e => {
+    console.log(e);
+  });
+});
+
+app.get('/api/food/:city/:type', (req, res) => {
+  const city = req.params.city, type = req.params.type;
+  yelp.accessToken(clientId, clientSecret).then(token => {
+    const client = yelp.client(token.jsonBody.access_token);
+
+    client.search({
+      term: type,
       location: city,
       limit: 50
     }).then(results => {
@@ -33,9 +49,3 @@ app.get('/api/food/:city', (req, res) => {
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
 });
-
-// client.business('gary-danko-san-francisco').then(response => {
-//   console.log(response.jsonBody.name);
-// }).catch(e => {
-//   console.log(e);
-// });
