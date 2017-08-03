@@ -34,3 +34,7 @@ npm i
 cd ..
 npm start
 ```
+
+## Deployed version
+
+Available on [Heroku](https://rowan-test.herokuapp.com/).
