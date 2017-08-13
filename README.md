@@ -1,6 +1,6 @@
-## Rowan Technology Code Exercise
+## Search for attractions by location using the Yelp API
 
-Completed by Rachel Cohen Aug. 3, 2017.
+Web app using `React` and `Express`.
 
 ## Built with `create-react-app`
 
