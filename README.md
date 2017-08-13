@@ -1,6 +1,6 @@
 ## Search for attractions by location using the Yelp API
 
-Web app using `React` and `Express`.
+Web app I created over a couple of days in Aug. 2017 using `React` and `Express`.
 
 ## Built with `create-react-app`
 
